@@ -20,7 +20,7 @@ logger = get_logger(__name__)
 class LocalLlm(LLM):
     def __init__(self, url):
         self.chat_open_ai = ChatOpenAI(
-            model="Local LLM",
+            model="deepseek-chat",
             temperature=0.5,
             streaming=True,
             openai_api_base=url,

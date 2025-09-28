@@ -18,11 +18,7 @@ user: |
   ---
   {context}
   ---
-  Use previous information as context to answer the following user question, Aim to keep responses super super concise and meaningful and try to express emotions.
-  ALWAYS ask clarification question, when
-  - user's question isn't clear
-  - seems unfinished
-  - seems totally irrelevant
+  Use previous information as context to answer the following user question. Aim to keep responses concise and meaningful. Only ask questions when absolutely necessary for understanding the user's request.
   ---
   {query}
 

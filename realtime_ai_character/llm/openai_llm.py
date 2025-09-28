@@ -15,20 +15,35 @@ logger = get_logger(__name__)
 
 class OpenaiLlm(LLM):
     def __init__(self, model):
+        # 检查是否使用 DeepSeek API
+        openai_api_base = os.getenv("OPENAI_API_BASE", "")
+        if "deepseek.com" in openai_api_base:
+            # 使用 DeepSeek 模型名称
+            actual_model = "deepseek-chat"
+            logger.info(f"Using DeepSeek API with model: {actual_model}")
+        else:
+            actual_model = model
+            logger.info(f"Using OpenAI API with model: {actual_model}")
+            
         if os.getenv("OPENAI_API_TYPE") == "azure":
             from langchain.chat_models import AzureChatOpenAI
 
             self.chat_open_ai = AzureChatOpenAI(
                 deployment_name=os.getenv("OPENAI_API_MODEL_DEPLOYMENT_NAME", "gpt-35-turbo"),
-                model=model,
+                model=actual_model,
                 temperature=0.5,
                 streaming=True,
             )
         else:
             from langchain.chat_models import ChatOpenAI
 
-            self.chat_open_ai = ChatOpenAI(model=model, temperature=0.5, streaming=True)
-        self.config = {"model": model, "temperature": 0.5, "streaming": True}
+            self.chat_open_ai = ChatOpenAI(
+                model=actual_model, 
+                temperature=0.5, 
+                streaming=True,
+                openai_api_base=openai_api_base if openai_api_base else None
+            )
+        self.config = {"model": actual_model, "temperature": 0.5, "streaming": True}
         self.db = get_chroma()
 
     def get_config(self):
