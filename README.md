@@ -15,6 +15,18 @@
 
 <br/>
 
+## 🎬 项目演示视频
+
+<div align="center">
+    <a href="https://www.bilibili.com/video/BV1HnnfziETE/?share_source=copy_web&vd_source=6bde61bba0fd3c0a0d70b8c2c6074bbe" target="_blank">
+        <img src="https://img.shields.io/badge/📺-观看演示视频-red?style=for-the-badge&logo=bilibili" alt="观看演示视频" height="40">
+    </a>
+    <p><strong>【一个智能语音对话系统的展示】</strong></p>
+    <p><em>点击上方按钮观看完整项目演示视频</em></p>
+</div>
+
+<br/>
+
 
 
 
